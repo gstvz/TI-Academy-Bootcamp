@@ -1,0 +1,5 @@
+1. Qual é a tag semântica que servirá de contêiner para as tags de parágrafo <p>?
+Seguindo as implementações do HTML5, focadas em proporcionar melhor semântica e SEO para as páginas, a tag <p> será envolvida pela tag <article>, para indicar um texto.
+
+2. Uma tag de parágrafo pode ser substituída por uma tag <div> principalmente para conter textos longos?
+Deve-se dar preferência ao uso das tags semânticas, como a própria <p>, para os seus casos específicos, deixando a div apenas para certas situações.

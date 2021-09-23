@@ -1,0 +1,12 @@
+1. Qual a propriedade CSS que permite aplicar um 'degradê' em um elemento HTML? Dê um exemplo.
+Degradês podem ser aplicados com as funções linear-gradient ou radial-gradient.
+
+background: linear-gradient(to left, #F5F5F5, #212121, #F5F5F5);
+
+background: radial-gradient(circle, #F5F5F5, #212121, #F5F5F5);
+
+2. Por padrão, é recomendado que a aplicação do CSS seja na forma inline ou mesmo no próprio corpo do código HTML?
+Deve-se dar preferências pelos arquivos próprios do CSS, e utilizar o inline apenas em casos específicos que se queira fazer uma alteração pequena em um único elemento. Além disso, o uso de arquivos CSS permite uma melhor organização do código.
+
+3. Qual a diferença básica entre a unidade de medida pixel(px) e a unidade em percentual (%)?
+O pixel é uma medida fixa, que não se amolda ao restante da página. Já a porcentagem é uma medida relativa, baseada no tamanho do elemento pai, do contêiner do elemento que está sendo definido com porcentagem. Assim, uma tag <p> com width em % terá uma width relativa à width do seu elemento pai, um <article>, por exemplo.

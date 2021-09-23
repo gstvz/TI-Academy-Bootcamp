@@ -1,0 +1,32 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.azul {
+    background-color: blue;
+    z-index: 0;
+}
+
+div {
+    height: 100px;
+    margin: 20px;
+    position: absolute;
+    width: 100px;
+}
+
+.verde {
+    background-color: green;
+    z-index: 0;
+}
+
+.vermelho {
+    background-color: red;
+    z-index: 1;
+}
+
+.preto {
+    background-color: black;
+    z-index: 0;
+}
