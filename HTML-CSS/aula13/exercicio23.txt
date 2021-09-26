@@ -1,0 +1,8 @@
+1. Dê uma definição para o elemeto HTML <body>.
+Essa tag é o corpo da página, onde ficará todo o conteúdo que será exibido para o usuário.
+
+2. É correto dizer que, por padrão, todos os elementos HTML possuem uma definição de margin e padding?
+Não, apenas alguns elementos possuem propriedades pré-definidas.
+
+3. Uma tag <figure> pode conter várias tags <figurecaption>?
+Não, só é possível definir uma <figurecaption> por <figure>, apesar de ser possível inserir várias figuras dentro dela.
