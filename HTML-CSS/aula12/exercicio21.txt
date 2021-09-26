@@ -1,0 +1,8 @@
+1. É verdade que todo arquivo CSS precisa estar dentro de outra pasta para que o navegador possa renderizar os estilos das propriedades CSS?
+Não, o arquivo CSS pode estar em qualquer local do projeto. Porém, por questão de organização, é melhor alocá-los numa única pasta de estilos.
+
+2. É verdade que todo HTML possui por padrão elementos filhos?
+Não. Os elementos podem ou não serem colocados dentro de outros, o que os torna filhos daquele container.
+
+3. O que é o viewport?
+É uma unidade de medida relativa ao tamanho da tela do navegador do usuário.

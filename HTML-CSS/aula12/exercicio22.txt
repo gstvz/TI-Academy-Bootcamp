@@ -1,0 +1,8 @@
+1. No CSS, um elemento filho pode ser referenciado por uma separação de espaço?
+Sim, o espaço entre seletores indica que as propriedades devem ser aplicadas aos descendentes do primeiro seletor.
+
+2. A propriedade CSS background-size permitirá renderizar um tamanho, além de alterar o tamanho do arquivo?
+Ela define o tamanho do background, porém não altera o tamanho do arquivo.
+
+3. A tag responsável por criar títulos em até 6 níveis é a HEADER?
+Não, são as headings, indicadas por h seguido de um nível, como <h1>, <h2> etc.
