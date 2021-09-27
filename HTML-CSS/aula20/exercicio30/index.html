@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 30</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    form {
+        width: 30%;
+    }
+
+    form, label, legend, input[type="submit"] {
+        margin: 0 auto;
+    }
+
+    input {
+        margin: 10px auto;
+        padding: 2px;
+        width: 50%;
+    }
+
+    input[type="submit"] {
+        width: 50%;
+    }
+
+    label {
+        padding: 5px;
+    }
+
+    section {        
+        width: 100vw;
+    }
+</style>
+<body>
+    <section>
+        <form method="POST" name="login">
+            <fieldset>
+                <legend>Login</legend>
+                <label for="emailLogin">E-mail</label>
+                <input type="email" id="emailLogin" name="emailLogin" id="">
+                <label for="senhaLogin">Senha</label>
+                <input type="password" id="senhaLogin" name="senhaLogin" id="">
+                <input type="submit" value="ENVIAR">
+            </fieldset>
+        </form>
+    </section>
+</body>
+</html>

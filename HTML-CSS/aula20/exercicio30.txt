@@ -1,0 +1,7 @@
+1. Qual a propriedade CSS que permite criar um efeito de sombra em um elemento HTML?
+A propriedade box-shadow permite criar uma sombra no container.
+
+2. O que realmente garante a transmissão ou submissão de dados de um formulário?
+Isso é feito pelo certificado de segurança SSL, que é uma camada de segurança para os dados enviados e recebidos pela web.
+
+3. Crie um formulário com um campo do tipo e-mail e do tipo senha, acrescente um botão de submissão.
