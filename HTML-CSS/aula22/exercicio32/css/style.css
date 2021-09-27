@@ -1,0 +1,56 @@
+* {
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#first-section {
+    height: 240px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.golden-rod {
+    background-color: goldenrod;
+}
+
+header {
+    height: 100px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.lawn-green {
+    background-color: lawngreen;
+}
+
+main {
+    background-color: cornflowerblue;
+    height: 100vh;
+    width: 100vw;
+}
+
+.second-container {
+    width: 765px;
+    height: 100%;
+}
+
+#second-section {    
+    display: flex;
+    height: 150px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.third-container {
+    height: 150px;
+    width: 750px;
+}
+
+.third-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}

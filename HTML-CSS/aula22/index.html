@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 22</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    #ajuste {
+        display: flex;
+        height: auto;
+        width: 100%;
+    }
+
+    #barra {
+        background-color: brown;
+        height: 100vh;
+        width: 30%;
+    }
+
+    body {
+        background-color: #FFE0B2;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    #content {
+        background-color: chartreuse;
+        height: 100vh;
+        width: 70%;
+    }
+
+    div {
+        margin: 2px;
+        padding: 10px;
+        width: 100px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    header {
+        background-color: blueviolet;
+        height: 60px;
+        width: 100%;
+    }
+
+    main {
+        background-color: #FBE9E7;
+        border: 1px solid #FF8A65;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        margin: 30px auto;
+        width: 600px;
+    }
+
+    .stretch {
+        align-items: stretch;
+    }
+
+    .tamanhoFixo {
+        height: 100px;
+    }
+</style>
+<body>
+    <main>
+        <header></header>
+        <div id="ajuste" class="flex">
+            <section class="flex" id="content"></section>
+            <section class="flex" id="barra"></section>
+        </div>
+    </main>
+</body>
+</html>
