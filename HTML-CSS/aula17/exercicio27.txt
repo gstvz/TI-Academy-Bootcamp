@@ -1,0 +1,8 @@
+1. Como podemos definir uma URL? Dê um exemplo.
+URL é Uniform Resource Locator, que se refere a um endereço no qual se encontra algum recurso, a partir de um protocolo, domínio e parâmetros, como um site ou arquivo. Um exemplo seria o https://youtube.com.
+
+2. O que é o HTTP?
+HTTP é HyperText Transfer Protocol, um protocolo utilizado para a comunicação entre cliente e servidor na Web.
+
+3. O que são vendors em CSS?
+São prefixos inseridos antes de propriedades experimentais, para que elas funcionem no navegador especificado.
