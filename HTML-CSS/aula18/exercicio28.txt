@@ -1,0 +1,5 @@
+1. Como é possível descobrir qual é a fonte padrão de renderização do navegador?
+Pelo Dev Tools é possível olhar o elemento html e ver o valor da propriedade.
+
+2. É verdade que quando alteramos um CSS diretamente no dev tools, automaticamente alteramos o arquivo CSS?
+Não. As alterações feitas no Dev Tools afetam apenas a aba aberta do navegador que, quando atualizada, volta ao padrão, que está definido no arquivo.
