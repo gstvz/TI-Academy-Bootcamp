@@ -1,0 +1,8 @@
+1. Qual a diferença da unidade de medida em e rem?
+A unidade em é relativa ao font-size do elemento pai, imediatamente acima. Já a rem é relativa ao font-size do elemento root, html.
+
+2. Como é criada uma variável no CSS? Dê um exemplo.
+Uma variável pode ser criada dentro do elemento :root, com o prefixo "--" seguida do nome da variável e seu valor.
+:root {
+    --variavel: #fff;
+}
