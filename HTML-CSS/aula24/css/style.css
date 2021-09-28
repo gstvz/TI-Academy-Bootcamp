@@ -1,0 +1,161 @@
+* {
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cor-border-geral: #CFD8DC;
+    --cor-padrao-fonte: #434f55;
+    --fonte-cor-titulo: #E53935;
+    --fonte-padrao: 'Righteous', cursive;
+    font-size: 100%;
+}
+
+html {
+    font-family: var(--fonte-padrao);
+}
+
+a {
+    align-items: center;
+    color: var(--cor-padrao-fonte);
+    font-size: 1.2rem;
+    height: 100%;
+    justify-content: center;
+    text-decoration: none;
+    width: 100%;
+}
+
+.btn {
+    background-color: green;
+    color: #fff;    
+    cursor: pointer;
+    margin: 10px 0;
+    padding: 10px;
+    width: 150px;
+}
+
+.card {
+    border: 2px solid var(--cor-border-geral);
+    margin: 5px;
+    padding: 10px;
+    max-width: 300px;
+}
+
+.card-img-pizza {
+    padding: 2px;
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-tamanho-pizza {
+    align-items: center;
+    justify-content: center;
+}
+
+.form-tamanho-pizza label {
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px;
+    width: 30px;
+}
+
+footer {
+    border-top: 2px solid var(--cor-border-geral);
+    text-align: center;
+}
+
+footer > h3 {
+    margin: 20px;
+}
+
+footer, header, main {
+    margin: auto;
+    width: 80%;
+}
+
+.go:hover {
+    background-color: var(--fonte-cor-titulo);
+    color: #fff;
+    transition: 0.5s;
+}
+
+.icons-list {
+    font-size: 1.5rem;
+    margin-right: 2px;
+}
+
+.img-pizza {
+    width: 100%;
+}
+
+#infos {
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#infos > p {
+    font-size: 0.8rem;
+    padding: 5px;
+}
+
+.item {
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+}
+
+#label-container {
+    justify-content: center;
+    margin: 10px 0;
+}
+
+#list-menu {
+    justify-content: flex-end;
+    width: 100%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+#section-cards {    
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 0;
+    width: 80%;
+}
+
+.subtitulo-pizza {
+    font-family: var(--fonte-padrao);
+    font-size: 1.2rem;
+    padding: 10px 0 10px 0;
+    text-align: center;
+}
+
+#top-header {
+    border-bottom: 1px solid var(--cor-border-geral);
+    height: 60px;
+}
+
+#top-header h1, #top-header nav {
+    width: 50%;
+}
+
+#top-header h1 {
+    align-items: center;    
+    font-size: clamp(0.8rem, 4.5vh, 3rem);
+    color: var(--fonte-cor-titulo);
+}
