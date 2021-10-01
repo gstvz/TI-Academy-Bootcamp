@@ -27,8 +27,13 @@ body {
     align-self: center;
     background-color: var(--black);
     color: #fff;
+    cursor: pointer;
     padding: 5px;
     width: 100px;
+}
+
+#form-button:hover {
+    background-color: var(--orange);
 }
 
 #form-email {
@@ -103,11 +108,17 @@ main {
     width: 80%;
 }
 
-#main-content-form {
+#main-content-form {    
+    flex-direction: column;
+    flex-grow: 1;
+    margin-top: 15px;
+}
+
+#main-content-form-fieldset {
+    align-items: center;
     flex-direction: column;
     flex-grow: 1;
     justify-content: space-around;
-    margin-top: 15px;
 }
 
 #main-content-text {
