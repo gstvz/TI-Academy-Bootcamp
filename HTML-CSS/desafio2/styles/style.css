@@ -103,6 +103,7 @@ main {
 
 #travel_explore-icon {
     color: var(--blue);
+    cursor: default;
     font-size: 64px;
     text-align: center;
 }
