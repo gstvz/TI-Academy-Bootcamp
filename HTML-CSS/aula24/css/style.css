@@ -20,9 +20,9 @@ html {
 a {
     align-items: center;
     color: var(--cor-padrao-fonte);
-    font-size: 1.2rem;
+    font-size: clamp(0.8rem, 3vw, 1.5rem);
     height: 100%;
-    justify-content: center;
+    justify-content: flex-end;
     text-decoration: none;
     width: 100%;
 }
@@ -31,16 +31,18 @@ a {
     background-color: green;
     color: #fff;    
     cursor: pointer;
+    font-size: clamp(12px, 2vw, 14px);
     margin: 10px 0;
     padding: 10px;
-    width: 150px;
+    max-width: 150px;
+    width: 60%;
 }
 
 .card {
     border: 2px solid var(--cor-border-geral);
     margin: 5px;
     padding: 10px;
-    max-width: 300px;
+    min-width: 200px;    
 }
 
 .card-img-pizza {
@@ -65,7 +67,7 @@ a {
 .form-tamanho-pizza label {
     align-items: center;
     cursor: pointer;
-    font-size: 14px;
+    font-size: clamp(12px, 2vw, 14px);
     padding: 2px;
     width: 30px;
 }
@@ -90,11 +92,6 @@ footer, header, main {
     transition: 0.5s;
 }
 
-.icons-list {
-    font-size: 1.5rem;
-    margin-right: 2px;
-}
-
 .img-pizza {
     width: 100%;
 }
@@ -105,14 +102,13 @@ footer, header, main {
 }
 
 #infos > p {
-    font-size: 0.8rem;
+    font-size: 12px;
     padding: 5px;
 }
 
 .item {
     align-items: center;
     justify-content: center;
-    width: 130px;
 }
 
 #label-container {
@@ -120,42 +116,65 @@ footer, header, main {
     margin: 10px 0;
 }
 
-#list-menu {
-    justify-content: flex-end;
-    width: 100%;
-}
-
 main {
     display: flex;
     justify-content: center;
 }
 
+#menu-list {
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.menu-list-icon {
+    font-size: clamp(0.8rem, 3vw, 1.5rem);
+    margin-right: 2px;
+}
+
 #section-cards {    
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    flex-wrap: wrap;    
     margin: 20px 0;
     width: 80%;
 }
 
+#section-cards-wrapper {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
 .subtitulo-pizza {
     font-family: var(--fonte-padrao);
-    font-size: 1.2rem;
+    font-size: clamp(16px, 2vw, 20px);
     padding: 10px 0 10px 0;
     text-align: center;
 }
 
 #top-header {
     border-bottom: 1px solid var(--cor-border-geral);
+    justify-content: space-between;
     height: 60px;
 }
 
-#top-header h1, #top-header nav {
-    width: 50%;
+#top-header h1 {
+    align-items: center;
+    font-size: clamp(1rem, 4vw, 2rem);
+    flex: 2;
+    color: var(--fonte-cor-titulo);
 }
 
-#top-header h1 {
-    align-items: center;    
-    font-size: clamp(0.8rem, 4.5vh, 3rem);
-    color: var(--fonte-cor-titulo);
+@media screen and (min-width: 768px) {
+    .card {
+        min-width: 200px; 
+    }
+
+    #section-cards {    
+        justify-content: center;
+    }
+
+    #section-cards-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 200px); 
+        justify-content: space-evenly;
+        width: 100%;
+    }
 }
