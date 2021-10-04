@@ -1,0 +1,5 @@
+1. Qual foi a principal finalidade do JS desde a sua criação?
+O JavaScript surgiu para dar funcionalidade e interatividade às páginas webs que, até então, eram estáticas, pois usavam apenas HTML e CSS, que não são linguagens de programação. Assim, foi possível implementar lógicas às páginas.
+
+2. Qual empresa originou o JS e quando isso aconteceu?
+O JavaScript foi criado pela NetScape nos anos 90.
