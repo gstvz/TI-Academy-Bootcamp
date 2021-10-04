@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 4 - Controle de fluxo ou condicionantes</title>
+</head>
+<script>
+    // estrutura if
+    var ano = 2021;
+    if (ano == 2021) {
+        console.log("O valor ano é igual a 2021");
+    }
+
+    ano = 2022;
+    if (ano != 2021) {
+        console.log("O valor ano é diferente de 2021");
+    }
+
+    ano = 2023;
+    if (ano == 2022) {
+        console.log("O valor ano é igual a 2022");
+    } else {
+        console.log("O valor ano não é igual a 2022");
+    }
+
+    ano = 2022;
+    if (ano >= 2022) {
+        if (ano == 2022) {
+            console.log("O valor ano é igual a 2022");
+        } else {
+            console.log("O valor ano é maior a 2022");
+        }        
+    } else {
+        console.log("O valor ano é menor que 2022");
+    }
+
+    // Operador OU ||
+    var a = 2;
+    var b = 0;
+    var c = 0;
+
+    if (a == 2 || b == 2 || c == 2) {
+        console.log("Estou no primeiro fluxo do OU.");
+    } else {
+        console.log("Estou no segundo fluxo do OU.");
+    }
+
+    // Operador E &&
+    var x = 8;
+    var y = 8;
+
+    if (x == 3 && y == 3) {
+        console.log("Estou no primeiro fluxo do E.");
+    } else {
+        console.log("Estou no segundo fluxo do E.");
+    }
+
+    if (x != y) {
+        console.log("X é diferente de Y.");
+    } else {
+        console.log("X é igual a Y.");
+    }
+
+    x = 5;
+    switch(x) {
+        case 1: console.log("Executando a tarefa 1.");
+        break;
+
+        case 2: console.log("Executando a tarefa 2.");
+        break;
+
+        case 5: 
+            var r = 3;
+            var resultado = r + x;
+            console.log(resultado);
+            if (resultado > 3) {
+                console.log("Valor aceitável.");
+            } else {
+                console.log("Valor não aceitável.");
+            }
+            console.log("Fim do switch.");
+        break;
+
+        case 8: console.log("Executando a tarefa 3.");
+        break;
+
+        default: console.log("Saindo do sistema.");
+        break;
+    }
+
+    console.log("Fim");
+</script>
+<body>    
+</body>
+</html>
