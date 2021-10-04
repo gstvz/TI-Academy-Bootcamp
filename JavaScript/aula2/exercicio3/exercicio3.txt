@@ -1,0 +1,5 @@
+1. O que são as variáveis em uma linguagem de programação?
+As variáveis são espaços na memória que alocam um valor definido pelo programa.
+
+2. Dê um exemplo de um tipo de dado e o que este tipo irá representar.
+A String é um tipo de dado primitivo que representa uma cadeia de caracteres.
