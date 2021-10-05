@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 6 - Variáveis e Funções</title>
+</head>
+<script>
+    // var qualquer;
+    // let qq = "variável let";
+    // const valorConstante = 100;
+
+    // if(true) {
+    //     var varDentroDoIf = "Estou dentro do If e sou uma var";
+    //     let letDentroDoIf = "Sou uma let e estou dentro do If";
+    //     const constDentroDoIf = 100;
+    //     console.log(qualquer);
+    //     console.log(qq);
+    //     console.log(valorConstante);               
+    // }
+
+    // console.log(varDentroDoIf); 
+    // console.log(letDentroDoIf);
+    // console.log(constDentroDoIf);
+
+    // literal
+    function soma() {
+        console.log(1 + 3);
+    }
+
+    // soma();
+
+    function concatenarNome() {
+        var nome = "Gustavo"; // local
+        var sobrenome = "França";
+        alert(nome + " " + sobrenome);
+    }
+
+    // concatenarNome();
+
+    function novaConcatenarNomes(nome, sobrenome) {
+        document.write(nome + " " + sobrenome);
+    }
+
+    // novaConcatenarNomes("Gustavo", "França");
+
+    let semNome = function() {
+        alert("Estou em uma função anônima.");
+    }
+
+    // semNome();
+
+    let funComPars = function(idade, idadePar) {
+        if(idade > idadePar) {
+            alert("Você tem idade maior que " + idadePar);
+        } else {
+            alert("Você tem idade menor que " + idadePar);
+        }
+    }
+
+    // funComPars(20, 18);
+    // funComPars(17, 18);
+</script>
+<body>    
+</body>
+</html>
