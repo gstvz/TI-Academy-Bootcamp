@@ -1,0 +1,8 @@
+1. Qual a diferença entre as declarações de variáveis var, let e const?
+A const define um dado imutável, cujo valor não pode ser alterado. Já a var e a let podem ter seus valores alterados após a declaração. Além disso, a var é global, podendo ser acessada de qualquer lugar do código, exceto quando declarada dentro de uma função, pois fica limitada ao escopo desta. Já a let e const respeitam o escopo em que foram declaradas, só podendo ser acessadas dentro deles.
+
+2. É verdade que o uso de parâmetros em funções é obrigatórios?
+Não, pois uma função pode executar algum código que não necessite de valores externos passados a ela.
+
+3. Selecione a opção verdadeira par inserir um arquivo js em um documento HTML:
+<script scr="nomeDoArquivo.js"></script>
