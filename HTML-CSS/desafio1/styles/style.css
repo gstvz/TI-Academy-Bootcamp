@@ -15,10 +15,6 @@ a {
     text-decoration: none;
 }
 
-body {
-    height: 100%;
-}
-
 .flex {
     display: flex;
 }
@@ -45,9 +41,12 @@ body {
 footer {
     align-items: center;
     background-color: var(--black);
+    bottom: 0;
     color: #fff;
     height: 80px;
     justify-content: center;
+    position: fixed;
+    width: 100%;
 }
 
 header {
@@ -94,7 +93,7 @@ html {
 main {
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: calc(100vh - 120px);
 }
 
 #main-content {  
