@@ -98,7 +98,7 @@ main {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    height: 100vh;
+    height: calc(100vh - 200px);
 }
 
 #travel_explore-icon {
