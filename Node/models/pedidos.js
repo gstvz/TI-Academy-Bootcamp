@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Pedidos.belongsTo(models.Cliente);
+      Pedidos.belongsToMany(models.Servico, { 
+          through: 'ItemPedido' 
+      });
     }
   };
   Pedidos.init({
