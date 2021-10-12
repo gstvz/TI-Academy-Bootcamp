@@ -136,6 +136,16 @@ app.get('/quantidadepedidos', async(req, res) => {
     });
 });
 
+app.get('/atualizaservico', async(req, res) => {
+    await servico.findByPk(1)
+    .then(serv => {
+        serv.nome = 'HTML/CSS/JS';
+        serv.descricao = 'Páginas estáticas e dinâmicas estilizadas';
+        serv.save();
+        return res.json({serv});
+    });
+});
+
 let port = process.env.PORT || 3001;
 
 app.listen(port, (req, res) => {
