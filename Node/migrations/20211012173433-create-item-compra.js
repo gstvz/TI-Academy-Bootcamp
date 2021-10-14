@@ -1,26 +1,35 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Pedidos', {
-      id: {
+    await queryInterface.createTable('ItemCompras', {
+      CompraId: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      ClienteId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
-        references: { 
-          model: 'clientes',
+        references: {
+          model: 'compras',
           key: 'id'
         },
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
-      data: {
-        type: Sequelize.DATEONLY
+      ProdutoId: {
+        allowNull: false,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'produtos',
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
+      quantidade: {
+        type: Sequelize.INTEGER
+      },
+      valor: {
+        type: Sequelize.FLOAT
+      },      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -32,6 +41,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Pedidos');
+    await queryInterface.dropTable('ItemCompras');
   }
 };
