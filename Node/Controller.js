@@ -484,11 +484,6 @@ app.get('/itempedido/quantidade', async(req, res) => {
 });
 
 app.put('/pedidos/:id/item/editar', async(req, res) => {
-    const item = {
-        quantidade: req.body.quantidade,
-        valor: req.body.valor
-    };
-
     if(!await pedido.findByPk(req.params.id)) {
         return res.status(400).json({
             erro: true,
@@ -501,6 +496,11 @@ app.put('/pedidos/:id/item/editar', async(req, res) => {
             erro: true,
             message: "Pedido não encontrado."
         });
+    };
+
+    const item = {
+        quantidade: req.body.quantidade,
+        valor: req.body.valor
     };
 
     await itempedido.update(item, {
@@ -864,11 +864,6 @@ app.get('/itemcompra/quantidade', async(req, res) => {
 });
 
 app.put('/compras/:id/itemcompra/editar', async(req, res) => {
-    const item = {
-        quantidade: req.body.quantidade,
-        valor: req.body.valor
-    };
-
     if(!await compra.findByPk(req.params.id)) {
         return res.status(400).json({
             erro: true,
@@ -881,6 +876,11 @@ app.put('/compras/:id/itemcompra/editar', async(req, res) => {
             erro: true,
             message: "Produto não encontrado."
         });
+    };
+
+    const item = {
+        quantidade: req.body.quantidade,
+        valor: req.body.valor
     };
 
     await itemcompra.update(item, {
