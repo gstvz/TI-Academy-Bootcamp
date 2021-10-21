@@ -16,16 +16,17 @@ export const Home = () => {
                             Cliente
                         </a>
                         <a
-                            href="/listar-servico"
-                            className="btn btn-outline-success btn-sm m-2"
-                        >
-                            Serviço
-                        </a>
-                        <a
                             href="/listar-pedido"
                             className="btn btn-outline-success btn-sm m-2"
                         >
                             Pedido
+                            
+                        </a>
+                        <a
+                            href="/listar-servico"
+                            className="btn btn-outline-success btn-sm m-2"
+                        >
+                            Serviço
                         </a>
                     </div>
                 </div>
