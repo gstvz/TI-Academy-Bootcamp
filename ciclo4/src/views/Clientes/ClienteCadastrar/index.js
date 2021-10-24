@@ -4,11 +4,15 @@ import { useState } from 'react';
 import { Link } from "react-router-dom"
 import { Button, Container, Form, FormGroup, Label, Input, Alert } from "reactstrap"
 
-export const ServicoCadastrar = () => {
+export const ClienteCadastrar = () => {
 
-    const [servico, setServico] = useState({
+    const [cliente, setCliente] = useState({
         nome: '',
-        descricao: ''
+        endereco: '',
+        cidade: '',
+        uf: '',
+        nascimento: '',
+        clienteDesde: ''
     });
 
     const [status, setStatus] = useState({
@@ -16,24 +20,28 @@ export const ServicoCadastrar = () => {
         message: ''
     });
 
-    const valorInput = e => setServico({
-        ...servico, 
+    const valorInput = e => setCliente({
+        ...cliente, 
         [e.target.name]: e.target.value
     });
 
-    const limparInput = () => setServico({
+    const limparInput = () => setCliente({
         nome: '',
-        descricao: ''
+        endereco: '',
+        cidade: '',
+        uf: '',
+        nascimento: '',
+        clienteDesde: ''
     });
 
-    const cadServico = async e => {
+    const cadCliente = async e => {
         e.preventDefault();
 
         const headers = {
             'Content-Type': 'application/json'
         };
 
-        await axios.post(api+"/servicos/cadastrar", servico, {headers})
+        await axios.post(api+"/clientes/cadastrar", cliente, {headers})
         .then((response) => {
             if(response.data.error) {
                 setStatus({
@@ -56,14 +64,14 @@ export const ServicoCadastrar = () => {
         <Container>
             <div className="d-flex">
                 <div className="m-auto p-2">
-                    <h1>Cadastrar Serviço</h1>
+                    <h1>Cadastrar Cliente</h1>
                 </div>
                 <div className="p-2">
                     <Link
-                        to="/servicos"
+                        to="/clientes"
                         className="btn btn-outline-success btn-sm"
                     >
-                        Serviços
+                        Clientes
                     </Link>
                 </div>
             </div>
@@ -73,14 +81,30 @@ export const ServicoCadastrar = () => {
             {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ''}
             {status.type === 'success' ? <Alert color="success">{status.message}</Alert> : ''}
 
-            <Form className="p-2" onSubmit={cadServico}>
+            <Form className="p-2" onSubmit={cadCliente}>
                 <FormGroup className="p-2">
                     <Label>Nome</Label>
-                    <Input type="text" name="nome" placeholder="Nome do serviço" value={servico.nome} onChange={valorInput} />
+                    <Input type="text" name="nome" placeholder="Nome do cliente" value={cliente.nome} onChange={valorInput} />
                 </FormGroup>
                 <FormGroup className="p-2">
-                    <Label>Descrição</Label>
-                    <Input type="text" name="descricao" placeholder="Descrição do serviço" value={servico.descricao} onChange={valorInput} />
+                    <Label>Endereço</Label>
+                    <Input type="text" name="endereco" placeholder="Endereço" value={cliente.endereco} onChange={valorInput} />
+                </FormGroup>                
+                <FormGroup className="p-2">
+                    <Label>Cidade</Label>
+                    <Input type="text" name="cidade" placeholder="Cidade" value={cliente.cidade} onChange={valorInput} />
+                </FormGroup>                
+                <FormGroup className="p-2">
+                    <Label>UF</Label>
+                    <Input type="text" name="uf" placeholder="UF" value={cliente.uf} onChange={valorInput} />
+                </FormGroup>                
+                <FormGroup className="p-2">
+                    <Label>Data de Nascimento</Label>
+                    <Input type="date" name="nascimento" placeholder="Data de Nascimento" value={cliente.nascimento} onChange={valorInput} />
+                </FormGroup>                
+                <FormGroup className="p-2">
+                    <Label>Cliente desde</Label>
+                    <Input type="date" name="clienteDesde" placeholder="Cliente Desde" value={cliente.clienteDesde} onChange={valorInput} />
                 </FormGroup>                
                 <Button className="m-2" type="submit" outline color = "success">Cadastrar</Button>
                 <Button className="m-2" type="button" outline color = "secondary" onClick={limparInput}>Limpar</Button>

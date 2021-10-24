@@ -32,14 +32,24 @@ export const Clientes = () => {
     return (
         <div>
             <Container>
-                <div>
-                    <h1>Clientes</h1>
+                <div className="d-flex">
+                    <div>
+                        <h1>Clientes</h1>
+                    </div>
+                    <div className="m-auto p-2">
+                        <Link
+                            to="/clientes/cadastrar"
+                            className="btn btn-outline-primary btn-sm"
+                        >
+                            Cadastrar
+                        </Link>
+                    </div>
+                    {status.type == 'Error' ?
+                        <Alert color="danger">
+                            {status.message}
+                        </Alert> : ""
+                    }
                 </div>
-                {status.type == 'Error' ?
-                    <Alert color="danger">
-                        {status.message}
-                    </Alert> : ""
-                }
                 <Table striped>
                     <thead>
                         <tr>
@@ -65,7 +75,7 @@ export const Clientes = () => {
                                 <td>{item.clienteDesde}</td>
                                 <td className="text-center/">
                                     <Link
-                                        to={"/clientes/"+item.id}
+                                        to={"/clientes/" + item.id}
                                         className="btn btn-outline-primary btn-sm"
                                     >
                                         Consultar

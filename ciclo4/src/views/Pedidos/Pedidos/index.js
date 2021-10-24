@@ -32,14 +32,24 @@ export const Pedidos = () => {
     return (
         <div>
             <Container>
-                <div>
-                    <h1>Pedidos</h1>
+            <div className="d-flex">
+                    <div>
+                        <h1>Pedidos</h1>
+                    </div>
+                    <div className="m-auto p-2">
+                        <Link
+                            to="/pedidos/cadastrar"
+                            className="btn btn-outline-primary btn-sm"
+                        >
+                            Cadastrar
+                        </Link>
+                    </div>
+                    {status.type == 'Error' ?
+                        <Alert color="danger">
+                            {status.message}
+                        </Alert> : ""
+                    }
                 </div>
-                {status.type == 'Error' ?
-                    <Alert color="danger">
-                        {status.message}
-                    </Alert> : ""
-                }
                 <Table striped>
                     <thead>
                         <tr>
