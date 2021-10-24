@@ -13,7 +13,7 @@ export const Clientes = () => {
     });
 
     const getServicos = async () => {
-        await axios.get(api + "/clientes/lista")
+        await axios.get(api + "/clientes")
             .then((response) => {
                 setData(response.data.clientes);
             })

@@ -13,7 +13,7 @@ export const Pedidos = () => {
     });
 
     const getServicos = async () => {
-        await axios.get(api + "/pedidos/lista")
+        await axios.get(api + "/pedidos")
             .then((response) => {
                 setData(response.data.pedidos);
             })
