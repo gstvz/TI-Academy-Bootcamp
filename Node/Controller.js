@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 
 // Clientes
 
-app.post('/clientes', async(req, res) => {
+app.post('/clientes/cadastrar', async(req, res) => {
     await cliente.create(
         req.body        
     ).then(function() {
@@ -37,7 +37,7 @@ app.post('/clientes', async(req, res) => {
     });
 });
 
-app.get('/clientes/lista', async(req, res) => {
+app.get('/clientes', async(req, res) => {
     await cliente.findAll({
         order: [['clienteDesde', 'ASC']]
     }).then(function(clientes) {
@@ -170,7 +170,7 @@ app.get('/clientes/:id/excluir', async(req, res) => {
 
 // Serviços
 
-app.post('/servicos', async(req, res) => {
+app.post('/servicos/cadastrar', async(req, res) => {
     await servico.create(
         req.body        
     ).then(function() {
@@ -186,9 +186,9 @@ app.post('/servicos', async(req, res) => {
     });    
 });
 
-app.get('/servicos/lista', async(req, res) => {
+app.get('/servicos', async(req, res) => {
     await servico.findAll({
-        order: [['nome', 'ASC']]
+        order: [['id', 'ASC']]
     }).then(function(servicos) {
         res.json({
             error: false,
@@ -315,7 +315,7 @@ app.get('/servicos/:id/excluir', async(req, res) => {
 
 // Pedidos
 
-app.post('/pedidos', async(req, res) => {
+app.post('/pedidos/cadastrar', async(req, res) => {
     await pedido.create(
         req.body
     ).then(function() {
@@ -331,7 +331,7 @@ app.post('/pedidos', async(req, res) => {
     });
 });
 
-app.get('/pedidos/lista', async(req, res) => {
+app.get('/pedidos', async(req, res) => {
     await pedido.findAll({
         raw: true
     }).then(function(pedidos) {
@@ -436,7 +436,7 @@ app.get('/pedidos/:id/excluir', async(req, res) => {
 
 // ItemPedido
 
-app.post('/itempedido', async(req, res) => {
+app.post('/itempedido/cadastrar', async(req, res) => {
     await itempedido.create(
         req.body
     ).then(function() {
@@ -452,7 +452,7 @@ app.post('/itempedido', async(req, res) => {
     });
 });
 
-app.get('/itempedido/lista', async(req, res) => {
+app.get('/itempedido', async(req, res) => {
     await itempedido.findAll({
         order: [['valor', 'DESC']]
     }).then(function(itens) {
@@ -550,7 +550,7 @@ app.get('/pedidos/:id/item/excluir', async(req, res) => {
 
 // Compra
 
-app.post('/compras', async(req, res) => {
+app.post('/compras/cadastrar', async(req, res) => {
     await compra.create(
         req.body        
     ).then(function() {
@@ -566,7 +566,7 @@ app.post('/compras', async(req, res) => {
     });    
 });
 
-app.get('/compras/lista', async(req, res) => {
+app.get('/compras', async(req, res) => {
     await compra.findAll({
         raw: true
     }).then(function(compras) {
@@ -671,7 +671,7 @@ app.get('/compras/:id/excluir', async(req, res) => {
 
 // Produto
 
-app.post('/produtos', async(req, res) => {
+app.post('/produtos/cadastrar', async(req, res) => {
     await produto.create(
         req.body        
     ).then(function() {
@@ -687,7 +687,7 @@ app.post('/produtos', async(req, res) => {
     });    
 });
 
-app.get('/produtos/lista', async(req, res) => {
+app.get('/produtos', async(req, res) => {
     await produto.findAll({
         order: [['nome', 'ASC']]
     }).then(function(produtos) {
@@ -816,7 +816,7 @@ app.get('/produtos/:id/excluir', async(req, res) => {
 
 // ItemProduto
 
-app.post('/itemcompra', async(req, res) => {
+app.post('/itemcompra/cadastro', async(req, res) => {
     await itemcompra.create(
         req.body
     ).then(function() {
@@ -832,7 +832,7 @@ app.post('/itemcompra', async(req, res) => {
     });
 });
 
-app.get('/itemcompra/lista', async(req, res) => {
+app.get('/itemcompra', async(req, res) => {
     await itemcompra.findAll({
         order: [['valor', 'DESC']]
     }).then(function(itens) {
