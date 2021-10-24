@@ -10,23 +10,23 @@ export const Home = () => {
                     </div>
                     <div className="p-2">
                         <a
-                            href="/listar-cliente"
+                            href="/clientes"
                             className="btn btn-outline-success btn-sm m-2"
                         >
-                            Cliente
+                            Clientes
                         </a>
                         <a
-                            href="/listar-pedido"
+                            href="/pedidos"
                             className="btn btn-outline-success btn-sm m-2"
                         >
-                            Pedido
+                            Pedidos
                             
                         </a>
                         <a
-                            href="/listar-servico"
+                            href="/servicos"
                             className="btn btn-outline-success btn-sm m-2"
                         >
-                            Serviço
+                            Serviços
                         </a>
                     </div>
                 </div>

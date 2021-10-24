@@ -2,20 +2,21 @@ import axios from "axios";
 import { api } from "../../../config";
 import { Alert, Container, Table } from "reactstrap";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-export const ListarServico = () => {
+export const Cliente = (props) => {
 
     const [data, setData] = useState([]);
     const [status, setStatus] = useState({
         type: '',
         message: ''
     });
+    const [id, setId] = useState(props.match.params.id);
 
-    const getServicos = async () => {
-        await axios.get(api + "/servicos/lista")
+    const getItems = async () => {
+        await axios.get(api + "/clientes/" + id)
             .then((response) => {
-                console.log(response.data.servicos);
-                setData(response.data.servicos);
+                setData(response.data.cli.pedidos);                
             })
             .catch(() => {
                 setStatus({
@@ -26,14 +27,14 @@ export const ListarServico = () => {
     };
 
     useEffect(() => {
-        getServicos();
-    }, []);
+        getItems();
+    }, [id]);
 
     return (
         <div>
             <Container>
                 <div>
-                    <h1>Visualizar informações do serviço</h1>
+                    <h1>Pedidos do cliente</h1>
                 </div>
                 {status.type == 'Error' ?
                     <Alert color="danger">
@@ -42,20 +43,27 @@ export const ListarServico = () => {
                 }
                 <Table striped>
                     <thead>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                        <th>Ação</th>
+                        <tr>
+                            <th>Pedido</th>
+                            <th>Data</th>
+                            <th>Ação</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {data.map(item => (
                             <tr key={item.id}>
                                 <th>{item.id}</th>
-                                <td>{item.nome}</td>
-                                <td>{item.descricao}</td>
-                                <td className="text-center/">Botão</td>
-                            </tr>
-                        ))};
+                                <td>{item.data}</td>
+                                <td className="text-center/">
+                                    <Link 
+                                        to={"/pedidos/"+item.id} 
+                                        className="btn btn-outline-primary btn-sm"
+                                    >
+                                        Consultar
+                                    </Link>
+                                </td>
+                            </tr>                            
+                        ))}
                     </tbody>
                 </Table>
             </Container>
