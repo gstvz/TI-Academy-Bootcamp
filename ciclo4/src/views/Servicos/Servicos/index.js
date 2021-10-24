@@ -13,7 +13,7 @@ export const Servicos = () => {
     });
 
     const getServicos = async () => {
-        await axios.get(api + "/servicos/lista")
+        await axios.get(api + "/servicos")
             .then((response) => {
                 setData(response.data.servicos);
             })
@@ -32,14 +32,24 @@ export const Servicos = () => {
     return (
         <div>
             <Container>
-                <div>
-                    <h1>Serviços</h1>
+                <div className="d-flex">
+                    <div>
+                        <h1>Serviços</h1>
+                    </div>
+                    <div className="m-auto p-2">
+                        <Link 
+                            to="/servicos/cadastrar"
+                            className="btn btn-outline-primary btn-sm"
+                        >
+                            Cadastrar
+                        </Link>
+                    </div>                
+                    {status.type == 'Error' ?
+                        <Alert color="danger">
+                            {status.message}
+                        </Alert> : ""
+                    }
                 </div>
-                {status.type == 'Error' ?
-                    <Alert color="danger">
-                        {status.message}
-                    </Alert> : ""
-                }
                 <Table striped>
                     <thead>
                         <tr>
