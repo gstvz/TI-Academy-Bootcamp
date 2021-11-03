@@ -33,32 +33,28 @@ export const PedidoCadastrar = () => {
             'Content-Type': 'application/json'
         };
 
-        await axios.post(api+"/pedidos/cadastrar", pedido, {headers})
+        await axios.post(api + "/pedidos/cadastrar", pedido, {headers})
         .then((response) => {
-            if(response.data.error) {
-                setStatus({
-                    type: 'error',
-                    message: response.data.message
-                });
-            } else {
-                setStatus({
-                    type: 'success',
-                    message: response.data.message
-                });
-            };
+            setStatus({
+                type: 'success',
+                message: response.data.message
+            });
         })
-        .catch(() => {
-            console.log("Erro: Sem conexão com a API.");
+        .catch((response) => {
+            setStatus({
+                type: 'error',
+                message: response.data.message
+            });
         });
     };
 
     return (
         <Container>
-            <div className="d-flex">
-                <div className="m-auto p-2">
+            <div className="d-flex justify-content-between">
+                <div className="p-2">
                     <h1>Cadastrar Pedido</h1>
                 </div>
-                <div className="p-2">
+                <div className="d-flex align-items-center p-2">
                     <Link
                         to="/pedidos"
                         className="btn btn-outline-success btn-sm"

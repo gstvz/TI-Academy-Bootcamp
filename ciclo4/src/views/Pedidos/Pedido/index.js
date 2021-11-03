@@ -16,12 +16,12 @@ export const Pedido = (props) => {
     const getPedido = async () => {
         await axios.get(api + "/pedidos/" + id)
             .then((response) => {
-                setData(response.data.ped.pedido_itens);                
+                setData(response.data.ped.pedido_itens);
             })
-            .catch(() => {
+            .catch((response) => {
                 setStatus({
-                    type: 'Error',
-                    message: 'Erro: Sem conexão com a API.'
+                    type: 'error',
+                    message: response.data.message
                 });
             });
     };
@@ -33,37 +33,48 @@ export const Pedido = (props) => {
     return (
         <div>
             <Container>
-                <div>
-                    <h1>Informações do pedido</h1>
+                <div className="d-flex justify-content-between">
+                    <div className="p-2">
+                        <h1>Informações do pedido</h1>
+                    </div>
+                    <div className="d-flex align-items-center p-2">
+                        <Link
+                            to="/pedidos"
+                            className="btn btn-outline-success btn-sm m-2"
+                        >
+                            Pedidos
+                        </Link>
+                    </div>
                 </div>
-                {status.type == 'Error' ?
-                    <Alert color="danger">
-                        {status.message}
-                    </Alert> : ""
-                }
+
+                <hr className="m-1" />
+
+                {status.type == 'Error' ? <Alert color="danger">{status.message}</Alert> : ""}
+
                 <Table striped>
                     <thead>
                         <tr>
                             <th>Serviço</th>
-                            <th>Quantidade</th>
-                            <th>Valor</th>
+                            <th className="text-center">Quantidade</th>
+                            <th className="text-center">Valor</th>
+                            <th className="text-center">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data.map(item => (
                             <tr key={item.id}>
                                 <th>{item.ServicoId}</th>
-                                <td>{item.quantidade}</td>
-                                <td>{item.valor}</td>
-                                <td className="text-center/">
-                                    <Link 
-                                        to={"/servicos/"+item.ServicoId} 
+                                <td className="text-center">{item.quantidade}</td>
+                                <td className="text-center">{item.valor}</td>
+                                <td className="text-center">
+                                    <Link
+                                        to={"/servicos/" + item.ServicoId}
                                         className="btn btn-outline-primary btn-sm"
                                     >
                                         Consultar
                                     </Link>
                                 </td>
-                            </tr>                            
+                            </tr>
                         ))}
                     </tbody>
                 </Table>
