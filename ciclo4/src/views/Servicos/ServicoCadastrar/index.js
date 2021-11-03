@@ -54,11 +54,11 @@ export const ServicoCadastrar = () => {
 
     return (
         <Container>
-            <div className="d-flex">
-                <div className="m-auto p-2">
+            <div className="d-flex justify-content-between">
+                <div className="p-2">
                     <h1>Cadastrar Serviço</h1>
                 </div>
-                <div className="p-2">
+                <div className="d-flex align-items-center p-2">
                     <Link
                         to="/servicos"
                         className="btn btn-outline-success btn-sm"

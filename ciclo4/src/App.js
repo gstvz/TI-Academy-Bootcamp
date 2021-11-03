@@ -13,6 +13,7 @@ import { PedidoEditar } from './views/Pedidos/PedidoEditar';
 import { Servicos } from './views/Servicos/Servicos';
 import { Servico } from './views/Servicos/Servico';
 import { ServicoCadastrar } from './views/Servicos/ServicoCadastrar';
+import { ServicoEditar } from './views/Servicos/ServicoEditar';
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
           <Route path="/pedidos/:id/editar" component={PedidoEditar} />
           <Route exact path="/servicos" component={Servicos} />
           <Route path="/servicos/cadastrar" component={ServicoCadastrar} />
-          <Route path="/servicos/:id" component={Servico} />
+          <Route exact path="/servicos/:id" component={Servico} />
+          <Route path="/servicos/:id/editar" component={ServicoEditar} />
         </Switch>
       </Router>
     </div>
