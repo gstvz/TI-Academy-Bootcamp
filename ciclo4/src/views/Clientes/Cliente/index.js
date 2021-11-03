@@ -16,7 +16,7 @@ export const Cliente = (props) => {
     const getCliente = async () => {
         await axios.get(api + "/clientes/" + id)
             .then((response) => {
-                setData(response.data.cli.pedidos);                
+                setData(response.data.cli.pedidos);
             })
             .catch(() => {
                 setStatus({
@@ -33,8 +33,24 @@ export const Cliente = (props) => {
     return (
         <div>
             <Container>
-                <div>
-                    <h1>Pedidos do cliente</h1>
+                <div className="d-flex justify-content-between">
+                    <div className="p-2">
+                        <h1>Pedidos do cliente</h1>
+                    </div>
+                    <div className="d-flex align-items-center p-2">
+                        <Link
+                            to="/clientes"
+                            className="btn btn-outline-success btn-sm m-2"
+                        >
+                            Clientes
+                        </Link>
+                        <Link
+                            to="/pedidos"
+                            className="btn btn-outline-success btn-sm m-2"
+                        >
+                            Pedidos
+                        </Link>
+                    </div>
                 </div>
                 {status.type == 'Error' ?
                     <Alert color="danger">
@@ -45,24 +61,24 @@ export const Cliente = (props) => {
                     <thead>
                         <tr>
                             <th>Pedido</th>
-                            <th>Data</th>
-                            <th>Ação</th>
+                            <th className="text-center">Data</th>
+                            <th className="text-center">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data.map(item => (
                             <tr key={item.id}>
                                 <th>{item.id}</th>
-                                <td>{item.data}</td>
-                                <td className="text-center/">
-                                    <Link 
-                                        to={"/pedidos/"+item.id} 
+                                <td className="text-center">{item.data}</td>
+                                <td className="text-center">
+                                    <Link
+                                        to={"/pedidos/" + item.id}
                                         className="btn btn-outline-primary btn-sm"
                                     >
                                         Consultar
                                     </Link>
                                 </td>
-                            </tr>                            
+                            </tr>
                         ))}
                     </tbody>
                 </Table>

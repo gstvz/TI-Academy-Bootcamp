@@ -41,32 +41,28 @@ export const ClienteCadastrar = () => {
             'Content-Type': 'application/json'
         };
 
-        await axios.post(api+"/clientes/cadastrar", cliente, {headers})
+        await axios.post(api + "/clientes/cadastrar", cliente, {headers})
         .then((response) => {
-            if(response.data.error) {
-                setStatus({
-                    type: 'error',
-                    message: response.data.message
-                });
-            } else {
                 setStatus({
                     type: 'success',
                     message: response.data.message
-                });
-            };
+                });            
         })
-        .catch(() => {
-            console.log("Erro: Sem conexão com a API.");
+        .catch((response) => {
+            setStatus({
+                type: 'error',
+                message: response.data.message
+            });
         });
     };
 
     return (
         <Container>
-            <div className="d-flex">
-                <div className="m-auto p-2">
+            <div className="d-flex justify-content-between">
+                <div className="p-2">
                     <h1>Cadastrar Cliente</h1>
                 </div>
-                <div className="p-2">
+                <div className="d-flex align-items-center p-2">
                     <Link
                         to="/clientes"
                         className="btn btn-outline-success btn-sm"
@@ -107,7 +103,7 @@ export const ClienteCadastrar = () => {
                     <Input type="date" name="clienteDesde" placeholder="Cliente Desde" value={cliente.clienteDesde} onChange={valorInput} />
                 </FormGroup>                
                 <Button className="m-2" type="submit" outline color = "success">Cadastrar</Button>
-                <Button className="m-2" type="button" outline color = "secondary" onClick={limparInput}>Limpar</Button>
+                <Button type="button" className="m-2" type="button" outline color="secondary" onClick={limparInput}>Limpar</Button>
             </Form>
         </Container>
     )

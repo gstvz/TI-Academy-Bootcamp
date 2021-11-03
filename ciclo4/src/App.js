@@ -5,12 +5,14 @@ import { Menu } from './components/Menu';
 import { Clientes } from './views/Clientes/Clientes';
 import { Cliente } from './views/Clientes/Cliente';
 import { ClienteCadastrar } from './views/Clientes/ClienteCadastrar';
+import { ClienteEditar } from './views/Clientes/ClienteEditar';
 import { Pedidos } from './views/Pedidos/Pedidos';
 import { Pedido } from './views/Pedidos/Pedido';
 import { PedidoCadastrar } from './views/Pedidos/PedidoCadastro';
 import { Servicos } from './views/Servicos/Servicos';
 import { Servico } from './views/Servicos/Servico';
 import { ServicoCadastrar } from './views/Servicos/ServicoCadastrar';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/clientes" component={Clientes} />
+          <Route path="/clientes/editar/:id" component={ClienteEditar} />
           <Route path="/clientes/cadastrar" component={ClienteCadastrar} />
           <Route path="/clientes/:id" component={Cliente} />
           <Route exact path="/pedidos" component={Pedidos} />
