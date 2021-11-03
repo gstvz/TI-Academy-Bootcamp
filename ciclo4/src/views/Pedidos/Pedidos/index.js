@@ -12,7 +12,7 @@ export const Pedidos = () => {
         message: ''
     });
 
-    const getServicos = async () => {
+    const getPedidos = async () => {
         await axios.get(api + "/pedidos")
             .then((response) => {
                 setData(response.data.pedidos);
@@ -26,7 +26,7 @@ export const Pedidos = () => {
     };
 
     useEffect(() => {
-        getServicos();
+        getPedidos();
     }, []);
 
     return (

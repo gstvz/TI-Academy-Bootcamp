@@ -13,7 +13,7 @@ export const Cliente = (props) => {
     });
     const [id, setId] = useState(props.match.params.id);
 
-    const getItems = async () => {
+    const getCliente = async () => {
         await axios.get(api + "/clientes/" + id)
             .then((response) => {
                 setData(response.data.cli.pedidos);                
@@ -27,7 +27,7 @@ export const Cliente = (props) => {
     };
 
     useEffect(() => {
-        getItems();
+        getCliente();
     }, [id]);
 
     return (

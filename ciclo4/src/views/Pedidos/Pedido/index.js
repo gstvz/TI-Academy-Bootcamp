@@ -13,7 +13,7 @@ export const Pedido = (props) => {
     });
     const [id, setId] = useState(props.match.params.id);
 
-    const getItems = async () => {
+    const getPedido = async () => {
         await axios.get(api + "/pedidos/" + id)
             .then((response) => {
                 setData(response.data.ped.pedido_itens);                
@@ -27,7 +27,7 @@ export const Pedido = (props) => {
     };
 
     useEffect(() => {
-        getItems();
+        getPedido();
     }, [id]);
 
     return (

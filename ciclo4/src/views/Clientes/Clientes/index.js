@@ -12,7 +12,7 @@ export const Clientes = () => {
         message: ''
     });
 
-    const getServicos = async () => {
+    const getClientes = async () => {
         await axios.get(api + "/clientes")
             .then((response) => {
                 setData(response.data.clientes);
@@ -26,7 +26,7 @@ export const Clientes = () => {
     };
 
     useEffect(() => {
-        getServicos();
+        getClientes();
     }, []);
 
     return (
