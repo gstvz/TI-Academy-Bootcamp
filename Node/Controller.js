@@ -393,6 +393,7 @@ app.put('/pedidos/:id/editar', async(req, res) => {
     };
 
     const ped = {
+        ClienteId: req.body.ClienteId,
         data: req.body.data
     };
 
