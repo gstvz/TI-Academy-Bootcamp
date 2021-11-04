@@ -11,17 +11,17 @@ export const Pedido = (props) => {
         type: '',
         message: ''
     });
-    const [id, setId] = useState(props.match.params.id);
+    const [id] = useState(props.match.params.id);
 
     const getPedido = async () => {
         await axios.get(api + "/pedidos/" + id)
             .then((response) => {
-                setData(response.data.ped.pedido_itens);
+                setData(response.data.ped.pedido_itens);                            
             })
-            .catch((response) => {
+            .catch(() => {
                 setStatus({
                     type: 'error',
-                    message: response.data.message
+                    message: 'Erro: Sem conexão com a API.'
                 });
             });
     };
@@ -44,12 +44,18 @@ export const Pedido = (props) => {
                         >
                             Pedidos
                         </Link>
+                        <Link
+                            to="/servicos"
+                            className="btn btn-outline-success btn-sm m-2"
+                        >
+                            Serviços
+                        </Link>
                     </div>
                 </div>
 
                 <hr className="m-1" />
 
-                {status.type == 'Error' ? <Alert color="danger">{status.message}</Alert> : ""}
+                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""}
 
                 <Table striped>
                     <thead>

@@ -17,10 +17,10 @@ export const Pedidos = () => {
             .then((response) => {
                 setData(response.data.pedidos);
             })
-            .catch((response) => {
+            .catch(() => {
                 setStatus({
                     type: 'error',
-                    message: response.data.message
+                    message: 'Erro: Sem conexão com a API.'
                 });
             });
     };
@@ -38,10 +38,10 @@ export const Pedidos = () => {
             });
             getPedidos();
         })
-        .catch((response) => {
+        .catch(() => {
             setStatus({
                 type: 'error',
-                message: response.data.message
+                message: 'Erro: Sem conexão com a API.'
             });
         });
     };
@@ -69,7 +69,8 @@ export const Pedidos = () => {
 
                 <hr className="m-1" />
                 
-                {status.type == 'error' ? <Alert color="danger">{status.message}</Alert> : ""}
+                {status.type === 'success' ? <Alert color="success">{status.message}</Alert> : ''}
+                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""}
 
                 <Table striped>
                     <thead>
@@ -86,21 +87,21 @@ export const Pedidos = () => {
                                 <th>{item.id}</th>
                                 <td className="text-center">{item.ClienteId}</td>
                                 <td className="text-center">{item.data}</td>
-                                <td className="d-flex justify-content-around">
+                                <td className="d-flex justify-content-center">
                                     <Link
                                         to={"/pedidos/" + item.id}
-                                        className="btn btn-outline-primary btn-sm"
+                                        className="btn btn-outline-primary btn-sm mx-1"
                                     >
                                         Consultar
                                     </Link>
                                     <Link
                                         to={"/pedidos/" + item.id + "/editar"}
-                                        className="btn btn-outline-warning btn-sm"
+                                        className="btn btn-outline-warning btn-sm mx-1"
                                     >
                                         Editar
                                     </Link>
                                     <span                                        
-                                        className="btn btn-outline-danger btn-sm"
+                                        className="btn btn-outline-danger btn-sm mx-1"
                                         onClick={() => excluirPedido(item.id)}
                                     >
                                         Excluir

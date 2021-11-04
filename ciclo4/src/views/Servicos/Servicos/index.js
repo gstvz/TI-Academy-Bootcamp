@@ -19,7 +19,7 @@ export const Servicos = () => {
             })
             .catch(() => {
                 setStatus({
-                    type: 'Error',
+                    type: 'error',
                     message: 'Erro: Sem conexão com a API.'
                 });
             });
@@ -38,10 +38,10 @@ export const Servicos = () => {
             });
             getServicos();
         })
-        .catch((response) => {
+        .catch(() => {
             setStatus({
                 type: 'error',
-                message: response.data.message
+                message: 'Erro: Sem conexão com a API.'
             });
         });
     };
@@ -62,14 +62,15 @@ export const Servicos = () => {
                             to="/servicos/cadastrar"
                             className="btn btn-outline-primary btn-sm"
                         >
-                            Cadastrar Serviço
+                            Cadastrar serviço
                         </Link>
                     </div>                
                 </div>
 
                 <hr className="m-1" />
 
-                {status.type == 'Error' ? <Alert color="danger">{status.message}</Alert> : ""}
+                {status.type === 'success' ? <Alert color="success">{status.message}</Alert> : ''}
+                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""}
 
                 <Table striped>
                     <thead>
@@ -86,21 +87,21 @@ export const Servicos = () => {
                                 <th className="text-center">{item.id}</th>
                                 <td className="text-center">{item.nome}</td>
                                 <td className="text-center">{item.descricao}</td>
-                                <td className="d-flex justify-content-around">
+                                <td className="d-flex justify-content-center">
                                     <Link 
                                         to={"/servicos/" + item.id} 
-                                        className="btn btn-outline-primary btn-sm"
+                                        className="btn btn-outline-primary btn-sm mx-1"
                                     >
                                     Consultar
                                     </Link>
                                     <Link
                                         to={"/servicos/" + item.id + "/editar"}
-                                        className="btn btn-outline-warning btn-sm"
+                                        className="btn btn-outline-warning btn-sm mx-1"
                                     >
                                         Editar
                                     </Link>
                                     <span                                        
-                                        className="btn btn-outline-danger btn-sm"
+                                        className="btn btn-outline-danger btn-sm mx-1"
                                         onClick={() => excluirServico(item.id)}
                                     >
                                         Excluir

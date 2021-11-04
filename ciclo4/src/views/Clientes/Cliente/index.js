@@ -11,16 +11,16 @@ export const Cliente = (props) => {
         type: '',
         message: ''
     });
-    const [id, setId] = useState(props.match.params.id);
+    const [id] = useState(props.match.params.id);
 
     const getCliente = async () => {
         await axios.get(api + "/clientes/" + id)
             .then((response) => {
-                setData(response.data.cli.pedidos);
+                setData(response.data.cli.pedidos);                               
             })
             .catch(() => {
                 setStatus({
-                    type: 'Error',
+                    type: 'error',
                     message: 'Erro: Sem conexão com a API.'
                 });
             });
@@ -52,11 +52,9 @@ export const Cliente = (props) => {
                         </Link>
                     </div>
                 </div>
-                {status.type == 'Error' ?
-                    <Alert color="danger">
-                        {status.message}
-                    </Alert> : ""
-                }
+                
+                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""}
+
                 <Table striped>
                     <thead>
                         <tr>

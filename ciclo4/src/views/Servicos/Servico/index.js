@@ -11,7 +11,7 @@ export const Servico = (props) => {
         type: '',
         message: ''
     });
-    const [id, setId] = useState(props.match.params.id);
+    const [id] = useState(props.match.params.id);
 
     const getItems = async () => {
         await axios.get(api + "/servicos/" + id + "/pedidos")
@@ -20,7 +20,7 @@ export const Servico = (props) => {
             })
             .catch(() => {
                 setStatus({
-                    type: 'Error',
+                    type: 'error',
                     message: 'Erro: Sem conexão com a API.'
                 });
             });
@@ -55,7 +55,7 @@ export const Servico = (props) => {
 
                 <hr className="m-1" />
 
-                {status.type == 'Error' ? <Alert color="danger"> {status.message} </Alert> : ""}
+                {status.type === 'error' ? <Alert color="danger"> {status.message} </Alert> : ""}
 
                 <Table striped>
                     <thead>

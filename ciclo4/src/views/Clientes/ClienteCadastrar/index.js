@@ -2,7 +2,7 @@ import axios from "axios";
 import { api } from "../../../config";
 import { useState } from 'react';
 import { Link } from "react-router-dom"
-import { Button, Container, Form, FormGroup, Label, Input, Alert } from "reactstrap"
+import { Button, Container, Form, FormGroup, Label, Input, Alert, Spinner } from "reactstrap"
 
 export const ClienteCadastrar = () => {
 
@@ -16,6 +16,7 @@ export const ClienteCadastrar = () => {
     });
 
     const [status, setStatus] = useState({
+        formSave: false,
         type: '',
         message: ''
     });
@@ -37,21 +38,27 @@ export const ClienteCadastrar = () => {
     const cadCliente = async e => {
         e.preventDefault();
 
+        setStatus({
+            formSave: true
+        });
+
         const headers = {
             'Content-Type': 'application/json'
         };
 
         await axios.post(api + "/clientes/cadastrar", cliente, {headers})
         .then((response) => {
-                setStatus({
-                    type: 'success',
-                    message: response.data.message
-                });            
-        })
-        .catch((response) => {
             setStatus({
-                type: 'error',
+                formSave: false,
+                type: 'success',
                 message: response.data.message
+            });      
+        })
+        .catch(() => {
+            setStatus({
+                formSave: false,
+                type: 'error',
+                message: "Erro: Sem conexão com a API."
             });
         });
     };
@@ -74,8 +81,8 @@ export const ClienteCadastrar = () => {
 
             <hr className="m-1" />
 
-            {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ''}
             {status.type === 'success' ? <Alert color="success">{status.message}</Alert> : ''}
+            {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ''}
 
             <Form className="p-2" onSubmit={cadCliente}>
                 <FormGroup className="p-2">
@@ -101,9 +108,12 @@ export const ClienteCadastrar = () => {
                 <FormGroup className="p-2">
                     <Label>Cliente desde</Label>
                     <Input type="date" name="clienteDesde" placeholder="Cliente Desde" value={cliente.clienteDesde} onChange={valorInput} />
-                </FormGroup>                
-                <Button className="m-2" type="submit" outline color = "success">Cadastrar</Button>
-                <Button type="button" className="m-2" type="button" outline color="secondary" onClick={limparInput}>Limpar</Button>
+                </FormGroup>
+                {status.formSave ? 
+                    <Button type="submit" className="m-2" outline color="success" disabled>Salvando... <Spinner type="border" size="sm" color="success" children="" /></Button> :
+                    <Button type="submit" className="m-2" outline color="success">Cadastrar</Button>
+                }     
+                <Button type="button" className="m-2" outline color="secondary" onClick={limparInput}>Limpar</Button>
             </Form>
         </Container>
     )

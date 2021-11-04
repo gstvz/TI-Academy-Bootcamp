@@ -1,16 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
-import { Alert, Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
+import { Alert, Button, Container, Form, FormGroup, Input, Label, Spinner } from "reactstrap";
 import { api } from "../../../config";
 
 export const PedidoEditar = (props) => {
 
     const [status, setStatus] = useState({
+        formSave: false,
         type: '',
         message: ''
     });
-    const [PedidoId, setPedidoId] = useState(props.match.params.id);
+    const [PedidoId] = useState(props.match.params.id);
     const [pedido, setPedido] = useState({
         id: '',
         ClienteId: '',
@@ -23,18 +24,19 @@ export const PedidoEditar = (props) => {
     });
 
     const limparInput = () => setPedido({
+        ClienteId: '',
         data: ''
     });
 
     const getPedido = async () => {
         await axios.get(api + "/pedidos/" + PedidoId)
-            .then((response) => {
+            .then((response) => { 
                 setPedido(response.data.ped);
             })
-            .catch((response) => {
+            .catch(() => {
                 setStatus({
                     type: 'error',
-                    message: response.data.message
+                    message: 'Erro: Sem conexão com a API.'
                 });
             });
     };
@@ -42,21 +44,27 @@ export const PedidoEditar = (props) => {
     const editarPedido = async e => {
         e.preventDefault();
 
+        setStatus({
+            formSave: true
+        });
+
         const headers = {
             'Content-Type': 'application/json'
         };
 
         await axios.put(api + "/pedidos/" + PedidoId + "/editar", pedido, { headers })
-            .then((response) => {
+            .then((response) => {                
                 setStatus({
+                    formSave: false,
                     type: 'success',
                     message: response.data.message
                 });
             })
             .catch(() => {
                 setStatus({
-                    type: 'Error',
-                    message: 'Erro: Sem conexão com a API.'
+                    formSave: false,
+                    type: 'error',
+                    message: "Erro: Sem conexão com a API."
                 });
             });
     };
@@ -84,8 +92,8 @@ export const PedidoEditar = (props) => {
 
                 <hr className="m-1" />
 
-                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ''}
                 {status.type === 'success' ? <Alert color="success">{status.message}</Alert> : ''}
+                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ''}
 
                 <Form className="p-2" onSubmit={editarPedido}>
                     <FormGroup className="p-2">
@@ -100,8 +108,11 @@ export const PedidoEditar = (props) => {
                         <Label>Data do pedido</Label>
                         <Input type="date" name="data" placeholder="Data do pedido" value={pedido.data} onChange={valorInput} />
                     </FormGroup>
-                    <Button type="submit" className="m-2" outline color="warning">Salvar</Button>
-                    <Button type="button" className="m-2" type="button" outline color="secondary" onClick={limparInput}>Limpar</Button>
+                    {status.formSave ? 
+                        <Button type="submit" className="m-2" outline color="success" disabled>Salvando... <Spinner type="border" size="sm" color="success" children="" /></Button> :
+                        <Button type="submit" className="m-2" outline color="warning">Salvar</Button>
+                    }    
+                    <Button type="button" className="m-2" outline color="secondary" onClick={limparInput}>Limpar</Button>
                 </Form>
             </Container>
         </div>

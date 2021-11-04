@@ -1,16 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
-import { Alert, Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
+import { Alert, Button, Container, Form, FormGroup, Input, Label, Spinner } from "reactstrap";
 import { api } from "../../../config";
 
 export const ServicoEditar = (props) => {
 
     const [status, setStatus] = useState({
+        formSave: false,
         type: '',
         message: ''
     });
-    const [ServicoId, setServicoId] = useState(props.match.params.id);
+    const [ServicoId] = useState(props.match.params.id);
     const [servico, setServico] = useState({
         nome: '',
         descricao: ''
@@ -33,7 +34,7 @@ export const ServicoEditar = (props) => {
             })
             .catch(() => {
                 setStatus({
-                    type: 'Error',
+                    type: 'error',
                     message: 'Erro: Sem conexão com a API.'
                 });
             });
@@ -42,6 +43,10 @@ export const ServicoEditar = (props) => {
     const editarServico = async e => {
         e.preventDefault();
 
+        setStatus({
+            formSave: true
+        });
+
         const headers = {
             'Content-Type': 'application/json'
         };
@@ -49,13 +54,15 @@ export const ServicoEditar = (props) => {
         await axios.put(api + "/servicos/" + ServicoId + "/editar", servico, { headers })
             .then((response) => {
                 setStatus({
+                    formSave: false,
                     type: 'success',
                     message: response.data.message
                 });
             })
             .catch(() => {
                 setStatus({
-                    type: 'Error',
+                    formSave: false,
+                    type: 'error',
                     message: 'Erro: Sem conexão com a API.'
                 });
             });
@@ -84,8 +91,8 @@ export const ServicoEditar = (props) => {
 
                 <hr className="m-1" />
 
-                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ''}
                 {status.type === 'success' ? <Alert color="success">{status.message}</Alert> : ''}
+                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ''}
 
                 <Form className="p-2" onSubmit={editarServico}>
                     <FormGroup className="p-2">
@@ -95,9 +102,12 @@ export const ServicoEditar = (props) => {
                     <FormGroup className="p-2">
                         <Label>Descrição</Label>
                         <Input type="text" name="descricao" placeholder="Descrição do serviço" value={servico.descricao} onChange={valorInput} />
-                    </FormGroup>                    
-                    <Button type="submit" className="m-2" outline color="warning">Salvar</Button>
-                    <Button type="button" className="m-2" type="button" outline color="secondary" onClick={limparInput}>Limpar</Button>
+                    </FormGroup>  
+                    {status.formSave ? 
+                        <Button type="submit" className="m-2" outline color="success" disabled>Salvando... <Spinner type="border" size="sm" color="success" children="" /></Button> :
+                        <Button type="submit" className="m-2" outline color="warning">Salvar</Button>
+                    }                     
+                    <Button type="button" className="m-2" outline color="secondary" onClick={limparInput}>Limpar</Button>
                 </Form>
             </Container>
         </div>
