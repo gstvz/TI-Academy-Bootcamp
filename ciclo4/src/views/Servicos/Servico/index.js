@@ -60,7 +60,7 @@ export const Servico = (props) => {
                 <Table striped>
                     <thead>
                         <tr>
-                            <th>Pedido</th>
+                            <th>Pedido ID</th>
                             <th className="text-center">Quantidade</th>
                             <th className="text-center">Valor</th>
                             <th className="text-center">Ação</th>
