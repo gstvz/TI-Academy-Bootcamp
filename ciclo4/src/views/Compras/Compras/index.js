@@ -75,7 +75,7 @@ export const Compras = () => {
                 <Table striped>
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Compra ID</th>
                             <th className="text-center">Cliente ID</th>
                             <th className="text-center">Data</th>
                             <th className="text-center">Ação</th>
