@@ -104,6 +104,10 @@ export const ClienteEditar = (props) => {
 
                 <Form className="p-2" onSubmit={editarCliente}>
                     <FormGroup className="p-2">
+                        <Label>Cliente ID</Label>
+                        <Input type="text" name="ClienteID" placeholder="ID do cliente" value={cliente.id} onChange={valorInput} disabled />
+                    </FormGroup>
+                    <FormGroup className="p-2">
                         <Label>Nome</Label>
                         <Input type="text" name="nome" placeholder="Nome do cliente" value={cliente.nome} onChange={valorInput} />
                     </FormGroup>
