@@ -18,6 +18,10 @@ import { ItemPedidos } from './views/ItemPedidos/ItemPedidos';
 import { ItemPedido } from './views/ItemPedidos/ItemPedido';
 import { ItemPedidosCadastrar } from './views/ItemPedidos/ItemPedidosCadastrar';
 import { ItemPedidosEditar } from './views/ItemPedidos/ItemPedidosEditar';
+import { Compras } from './views/Compras/Compras';
+import { CompraCadastrar } from './views/Compras/CompraCadastro';
+import { Compra } from './views/Compras/Compra';
+import { CompraEditar } from './views/Compras/CompraEditar';
 
 function App() {
   return (
@@ -27,9 +31,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/clientes" component={Clientes} />
-          <Route path="/clientes/editar/:id" component={ClienteEditar} />
           <Route path="/clientes/cadastrar" component={ClienteCadastrar} />
           <Route path="/clientes/:id" component={Cliente} />
+          <Route path="/clientes/editar/:id" component={ClienteEditar} />
           <Route exact path="/pedidos" component={Pedidos} />
           <Route path="/pedidos/cadastrar" component={PedidoCadastrar} />
           <Route exact path="/pedidos/:id" component={Pedido} />
@@ -41,7 +45,11 @@ function App() {
           <Route exact path="/itenspedidos" component={ItemPedidos} />
           <Route path="/itenspedidos/cadastrar" component={ItemPedidosCadastrar} />
           <Route exact path="/itenspedidos/:PedidoId/:ServicoId" component={ItemPedido} />         
-          <Route path="/itenspedidos/:PedidoId/:ServicoId/editar" component={ItemPedidosEditar} />          
+          <Route path="/itenspedidos/:PedidoId/:ServicoId/editar" component={ItemPedidosEditar} />   
+          <Route exact path="/compras" component={Compras} />
+          <Route path="/compras/cadastrar" component={CompraCadastrar} />
+          <Route exact path="/compras/:id" component={Compra} />
+          <Route exact path="/compras/:id/editar" component={CompraEditar} />
         </Switch>
       </Router>
     </div>
