@@ -484,6 +484,40 @@ app.get('/itempedido/quantidade', async(req, res) => {
     });
 });
 
+app.get('/itempedido/:PedidoId/:ServicoId', async(req, res) => {
+    if(!await pedido.findByPk(req.params.PedidoId)) {
+        return res.status(400).json({
+            erro: true,
+            message: "Pedido não encontrado."
+        });
+    };
+
+    if(!await servico.findByPk(req.params.ServicoId)) {
+        return res.status(400).json({
+            erro: true,
+            message: "Serviço não encontrado."
+        });
+    };
+
+    await itempedido.findOne({where: 
+        Sequelize.and(
+            {ServicoId: req.params.ServicoId},
+            {PedidoId: req.params.PedidoId}
+        )
+    })
+    .then(item => {
+        return res.json({
+            error: false,
+            item
+        });
+    }).catch(function(erro) {
+        return res.status(400).json({
+            error: true,
+            message: "Erro ao buscar o pedido."
+        });
+    });
+});
+
 app.put('/itempedido/:PedidoId/:ServicoId/editar', async(req, res) => {
     if(!await pedido.findByPk(req.params.PedidoId)) {
         return res.status(400).json({
@@ -495,11 +529,13 @@ app.put('/itempedido/:PedidoId/:ServicoId/editar', async(req, res) => {
     if(!await servico.findByPk(req.params.ServicoId)) {
         return res.status(400).json({
             erro: true,
-            message: "Pedido não encontrado."
+            message: "Serviço não encontrado."
         });
     };
 
     const item = {
+        PedidoId: req.body.PedidoId,
+        ServicoId: req.body.ServicoId,
         quantidade: req.body.quantidade,
         valor: req.body.valor
     };
@@ -512,7 +548,7 @@ app.put('/itempedido/:PedidoId/:ServicoId/editar', async(req, res) => {
     }).then(function(itens) {
         return res.json({
             error: false,
-            message: "Pedido alterado com sucesso!",
+            message: "Item alterado com sucesso!",
             itens
         });
     }).catch(function(erro) {
@@ -528,6 +564,13 @@ app.get('/itempedido/:PedidoId/:ServicoId/excluir', async(req, res) => {
         return res.status(400).json({
             erro: true,
             message: "Pedido não encontrado."
+        });
+    };
+
+    if(!await servico.findByPk(req.params.ServicoId)) {
+        return res.status(400).json({
+            erro: true,
+            message: "Serviço não encontrado."
         });
     };
 
