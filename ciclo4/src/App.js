@@ -14,6 +14,10 @@ import { Servicos } from './views/Servicos/Servicos';
 import { Servico } from './views/Servicos/Servico';
 import { ServicoCadastrar } from './views/Servicos/ServicoCadastrar';
 import { ServicoEditar } from './views/Servicos/ServicoEditar';
+import { ItemPedidos } from './views/ItemPedidos/ItemPedidos';
+import { ItemPedido } from './views/ItemPedidos/ItemPedido';
+import { ItemPedidosCadastrar } from './views/ItemPedidos/ItemPedidosCadastrar';
+import { ItemPedidosEditar } from './views/ItemPedidos/ItemPedidosEditar';
 
 function App() {
   return (
@@ -33,7 +37,11 @@ function App() {
           <Route exact path="/servicos" component={Servicos} />
           <Route path="/servicos/cadastrar" component={ServicoCadastrar} />
           <Route exact path="/servicos/:id" component={Servico} />
-          <Route path="/servicos/:id/editar" component={ServicoEditar} />
+          <Route path="/servicos/:id/editar" component={ServicoEditar} />          
+          <Route exact path="/itenspedidos" component={ItemPedidos} />
+          <Route path="/itenspedidos/cadastrar" component={ItemPedidosCadastrar} />
+          <Route exact path="/itenspedidos/:PedidoId/:ServicoId" component={ItemPedido} />         
+          <Route path="/itenspedidos/:PedidoId/:ServicoId/editar" component={ItemPedidosEditar} />          
         </Switch>
       </Router>
     </div>

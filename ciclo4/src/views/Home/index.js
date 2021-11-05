@@ -28,6 +28,12 @@ export const Home = () => {
                         >
                             Serviços
                         </a>
+                        <a
+                            href="/itenspedidos"
+                            className="btn btn-outline-success btn-sm m-2"
+                        >
+                            Itens
+                        </a>
                     </div>
                 </div>
             </Container>
