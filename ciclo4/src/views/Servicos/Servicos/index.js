@@ -75,7 +75,7 @@ export const Servicos = () => {
                 <Table striped>
                     <thead>
                         <tr>
-                        <th>ID</th>
+                        <th>Serviço ID</th>
                         <th className="text-center">Nome</th>
                         <th className="text-center">Descrição</th>
                         <th className="text-center">Ação</th>
