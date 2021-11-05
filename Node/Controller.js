@@ -733,7 +733,7 @@ app.post('/produtos/cadastrar', async(req, res) => {
 
 app.get('/produtos', async(req, res) => {
     await produto.findAll({
-        order: [['nome', 'ASC']]
+        order: [['id', 'ASC']]
     }).then(function(produtos) {
         res.json({
             error: false,
