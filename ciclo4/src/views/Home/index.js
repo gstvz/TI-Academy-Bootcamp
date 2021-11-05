@@ -44,7 +44,7 @@ export const Home = () => {
                                 Compras
                             </a>
                             <a
-                                href="/"
+                                href="/produtos"
                                 className="btn btn-outline-success btn-sm m-2"
                             >
                                 Produtos

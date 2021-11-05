@@ -22,6 +22,10 @@ import { Compras } from './views/Compras/Compras';
 import { CompraCadastrar } from './views/Compras/CompraCadastro';
 import { Compra } from './views/Compras/Compra';
 import { CompraEditar } from './views/Compras/CompraEditar';
+import { Produtos } from './views/Produtos/Produtos';
+import { ProdutoCadastrar } from './views/Produtos/ProdutoCadastro';
+import { Produto } from './views/Produtos/Produto';
+import { ProdutoEditar } from './views/Produtos/ProdutoEditar';
 
 function App() {
   return (
@@ -49,7 +53,11 @@ function App() {
           <Route exact path="/compras" component={Compras} />
           <Route path="/compras/cadastrar" component={CompraCadastrar} />
           <Route exact path="/compras/:id" component={Compra} />
-          <Route exact path="/compras/:id/editar" component={CompraEditar} />
+          <Route path="/compras/:id/editar" component={CompraEditar} />
+          <Route exact path="/produtos" component={Produtos} />
+          <Route path="/produtos/cadastrar" component={ProdutoCadastrar} />
+          <Route exact path="/produtos/:id" component={Produto} />
+          <Route path="/produtos/:id/editar" component={ProdutoEditar} />
         </Switch>
       </Router>
     </div>
