@@ -97,7 +97,7 @@ export const CompraEditar = (props) => {
 
                 <Form className="p-2" onSubmit={editarCompra}>
                     <FormGroup className="p-2">
-                        <Label>ID</Label>
+                        <Label>Compra ID</Label>
                         <Input type="text" name="id" placeholder="ID da compra" value={compra.id} onChange={valorInput} disabled />
                     </FormGroup>
                     <FormGroup className="p-2">
