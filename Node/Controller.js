@@ -484,15 +484,15 @@ app.get('/itempedido/quantidade', async(req, res) => {
     });
 });
 
-app.put('/pedidos/:id/item/editar', async(req, res) => {
-    if(!await pedido.findByPk(req.params.id)) {
+app.put('/itenspedidos/:PedidoId/:ServicoId/editar', async(req, res) => {
+    if(!await pedido.findByPk(req.params.PedidoId)) {
         return res.status(400).json({
             erro: true,
             message: "Pedido não encontrado."
         });
     };
 
-    if(!await servico.findByPk(req.body.ServicoId)) {
+    if(!await servico.findByPk(req.params.ServicoId)) {
         return res.status(400).json({
             erro: true,
             message: "Pedido não encontrado."
@@ -506,8 +506,8 @@ app.put('/pedidos/:id/item/editar', async(req, res) => {
 
     await itempedido.update(item, {
         where: Sequelize.and(
-            {ServicoId: req.body.ServicoId},
-            {PedidoId: req.params.id}
+            {ServicoId: req.params.ServicoId},
+            {PedidoId: req.params.PedidoId}
         )
     }).then(function(itens) {
         return res.json({
@@ -523,8 +523,8 @@ app.put('/pedidos/:id/item/editar', async(req, res) => {
     });
 });
 
-app.get('/pedidos/:id/item/excluir', async(req, res) => {
-    if(!await pedido.findByPk(req.params.id)) {
+app.get('/itenspedidos/:PedidoId/:ServicoId/excluir', async(req, res) => {
+    if(!await pedido.findByPk(req.params.PedidoId)) {
         return res.status(400).json({
             erro: true,
             message: "Pedido não encontrado."
@@ -533,8 +533,8 @@ app.get('/pedidos/:id/item/excluir', async(req, res) => {
 
     await itempedido.destroy({        
         where: Sequelize.and({
-            ServicoId: req.body.ServicoId, 
-            PedidoId: req.params.id
+            ServicoId: req.params.ServicoId, 
+            PedidoId: req.params.PedidoId
         })
     }).then(function() {
         return res.json({
