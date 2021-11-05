@@ -58,7 +58,7 @@ export const Cliente = (props) => {
                 <Table striped>
                     <thead>
                         <tr>
-                            <th>Pedido</th>
+                            <th>Pedido ID</th>
                             <th className="text-center">Data</th>
                             <th className="text-center">Ação</th>
                         </tr>
