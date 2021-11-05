@@ -455,7 +455,7 @@ app.post('/itempedido/cadastrar', async(req, res) => {
 
 app.get('/itempedido', async(req, res) => {
     await itempedido.findAll({
-        order: [['valor', 'DESC']]
+        order: [['PedidoId', 'ASC']]
     }).then(function(itens) {
         res.json({
             error: false,
