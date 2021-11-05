@@ -62,7 +62,7 @@ export const Produtos = () => {
                             to="/produtos/cadastrar"
                             className="btn btn-outline-primary btn-sm"
                         >
-                            Cadastrar Produto
+                            Cadastrar produto
                         </Link>
                     </div>                
                 </div>
