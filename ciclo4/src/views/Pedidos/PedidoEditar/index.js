@@ -97,11 +97,11 @@ export const PedidoEditar = (props) => {
 
                 <Form className="p-2" onSubmit={editarPedido}>
                     <FormGroup className="p-2">
-                        <Label>ID</Label>
+                        <Label>Pedido ID</Label>
                         <Input type="text" name="id" placeholder="ID do pedido" value={pedido.id} onChange={valorInput} disabled />
                     </FormGroup>
                     <FormGroup className="p-2">
-                        <Label>Cliente Id</Label>
+                        <Label>Cliente ID</Label>
                         <Input type="text" name="ClienteId" placeholder="ID do Cliente" value={pedido.ClienteId} onChange={valorInput} />
                     </FormGroup>
                     <FormGroup className="p-2">
