@@ -63,7 +63,7 @@ export const Servico = (props) => {
                             <th>Pedido</th>
                             <th className="text-center">Quantidade</th>
                             <th className="text-center">Valor</th>
-                            <th className="text-center">Visualizar</th>
+                            <th className="text-center">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
