@@ -75,7 +75,7 @@ export const Clientes = () => {
                 <Table striped>
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Cliente ID</th>
                             <th className="text-center">Nome</th>
                             <th className="text-center">Endereço</th>
                             <th className="text-center">Cidade</th>
