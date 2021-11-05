@@ -84,7 +84,7 @@ export const Servicos = () => {
                     <tbody>
                         {data.map(item => (
                             <tr key={item.id}>
-                                <th className="text-center">{item.id}</th>
+                                <th>{item.id}</th>
                                 <td className="text-center">{item.nome}</td>
                                 <td className="text-center">{item.descricao}</td>
                                 <td className="d-flex justify-content-center">
