@@ -40,6 +40,12 @@ export const ItemPedido = (props) => {
                     </div>
                     <div className="d-flex align-items-center p-2">
                         <Link
+                            to="/itenspedidos"
+                            className="btn btn-outline-success btn-sm m-2"
+                        >
+                            Itens
+                        </Link>
+                        <Link
                             to="/pedidos"
                             className="btn btn-outline-success btn-sm m-2"
                         >
