@@ -484,7 +484,7 @@ app.get('/itempedido/quantidade', async(req, res) => {
     });
 });
 
-app.put('/itenspedidos/:PedidoId/:ServicoId/editar', async(req, res) => {
+app.put('/itempedido/:PedidoId/:ServicoId/editar', async(req, res) => {
     if(!await pedido.findByPk(req.params.PedidoId)) {
         return res.status(400).json({
             erro: true,
@@ -523,7 +523,7 @@ app.put('/itenspedidos/:PedidoId/:ServicoId/editar', async(req, res) => {
     });
 });
 
-app.get('/itenspedidos/:PedidoId/:ServicoId/excluir', async(req, res) => {
+app.get('/itempedido/:PedidoId/:ServicoId/excluir', async(req, res) => {
     if(!await pedido.findByPk(req.params.PedidoId)) {
         return res.status(400).json({
             erro: true,
