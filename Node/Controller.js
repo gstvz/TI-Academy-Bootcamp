@@ -860,7 +860,7 @@ app.get('/produtos/:id/excluir', async(req, res) => {
 
 // ItemProduto
 
-app.post('/itemcompra/cadastro', async(req, res) => {
+app.post('/itemcompra/cadastrar', async(req, res) => {
     await itemcompra.create(
         req.body
     ).then(function() {
@@ -878,7 +878,7 @@ app.post('/itemcompra/cadastro', async(req, res) => {
 
 app.get('/itemcompra', async(req, res) => {
     await itemcompra.findAll({
-        order: [['valor', 'DESC']]
+        order: [['CompraId', 'ASC']]
     }).then(function(itens) {
         res.json({
             error: false,
@@ -907,15 +907,49 @@ app.get('/itemcompra/quantidade', async(req, res) => {
     });
 });
 
-app.put('/compras/:id/itemcompra/editar', async(req, res) => {
-    if(!await compra.findByPk(req.params.id)) {
+app.get('/itemcompra/:CompraId/:ProdutoId', async(req, res) => {
+    if(!await compra.findByPk(req.params.CompraId)) {
         return res.status(400).json({
             erro: true,
             message: "Compra não encontrada."
         });
     };
 
-    if(!await produto.findByPk(req.body.ProdutoId)) {
+    if(!await produto.findByPk(req.params.ProdutoId)) {
+        return res.status(400).json({
+            erro: true,
+            message: "Produto não encontrado."
+        });
+    };
+
+    await itemcompra.findOne({where: 
+        Sequelize.and(
+            {CompraId: req.params.CompraId},
+            {ProdutoId: req.params.ProdutoId}
+        )
+    })
+    .then(item => {
+        return res.json({
+            error: false,
+            item
+        });
+    }).catch(function(erro) {
+        return res.status(400).json({
+            error: true,
+            message: "Erro ao buscar o pedido."
+        });
+    });
+});
+
+app.put('/itemcompra/:CompraId/:ProdutoId/editar', async(req, res) => {
+    if(!await compra.findByPk(req.params.CompraId)) {
+        return res.status(400).json({
+            erro: true,
+            message: "Compra não encontrada."
+        });
+    };
+
+    if(!await produto.findByPk(req.params.ProdutoId)) {
         return res.status(400).json({
             erro: true,
             message: "Produto não encontrado."
@@ -923,14 +957,16 @@ app.put('/compras/:id/itemcompra/editar', async(req, res) => {
     };
 
     const item = {
+        CompraId: req.body.CompraId,
+        ProdutoId: req.body.ProdutoId,
         quantidade: req.body.quantidade,
         valor: req.body.valor
     };
 
     await itemcompra.update(item, {
         where: Sequelize.and(
-            {ProdutoId: req.body.ProdutoId},
-            {CompraId: req.params.id}
+            {ProdutoId: req.params.ProdutoId},
+            {CompraId: req.params.CompraId}
         )
     }).then(function(itens) {
         return res.json({
@@ -946,18 +982,25 @@ app.put('/compras/:id/itemcompra/editar', async(req, res) => {
     });
 });
 
-app.get('/compras/:id/itemcompra/excluir', async(req, res) => {
-    if(!await compra.findByPk(req.params.id)) {
+app.get('/itemcompra/:CompraId/:ProdutoId/excluir', async(req, res) => {
+    if(!await compra.findByPk(req.params.CompraId)) {
         return res.status(400).json({
             erro: true,
             message: "Compra não encontrada."
         });
     };
 
+    if(!await produto.findByPk(req.params.ProdutoId)) {
+        return res.status(400).json({
+            erro: true,
+            message: "Produto não encontrado."
+        });
+    };
+
     await itemcompra.destroy({        
         where: Sequelize.and({
-            ProdutoId: req.body.ProdutoId, 
-            CompraId: req.params.id
+            ProdutoId: req.params.ProdutoId, 
+            CompraId: req.params.CompraId
         })
     }).then(function() {
         return res.json({
