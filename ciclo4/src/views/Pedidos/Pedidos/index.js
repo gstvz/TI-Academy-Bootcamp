@@ -75,8 +75,8 @@ export const Pedidos = () => {
                 <Table striped>
                     <thead>
                         <tr>
-                            <th>Pedido</th>
-                            <th className="text-center">Cliente</th>
+                            <th>Pedido ID</th>
+                            <th className="text-center">Cliente ID</th>
                             <th className="text-center">Data</th>
                             <th className="text-center">Ação</th>
                         </tr>
