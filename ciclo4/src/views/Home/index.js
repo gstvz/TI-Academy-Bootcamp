@@ -50,7 +50,7 @@ export const Home = () => {
                                 Produtos
                             </a>
                             <a
-                                href="/"
+                                href="/itenscompras"
                                 className="btn btn-outline-success btn-sm m-2"
                             >
                                 Itens das compras
