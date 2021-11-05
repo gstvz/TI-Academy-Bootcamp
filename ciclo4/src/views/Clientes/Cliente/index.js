@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 
 export const Cliente = (props) => {
 
-    const [data, setData] = useState([]);
+    const [pedidos, setPedidos] = useState([]);
+    const [compras, setCompras] = useState([]);
     const [status, setStatus] = useState({
         type: '',
         message: ''
@@ -16,7 +17,8 @@ export const Cliente = (props) => {
     const getCliente = async () => {
         await axios.get(api + "/clientes/" + id)
             .then((response) => {
-                setData(response.data.cli.pedidos);                               
+                setPedidos(response.data.cli.pedidos);  
+                setCompras(response.data.cli.compras);
             })
             .catch(() => {
                 setStatus({
@@ -35,7 +37,7 @@ export const Cliente = (props) => {
             <Container>
                 <div className="d-flex justify-content-between">
                     <div className="p-2">
-                        <h1>Pedidos do cliente</h1>
+                        <h1>Pedidos e Compras do cliente</h1>
                     </div>
                     <div className="d-flex align-items-center p-2">
                         <Link
@@ -64,13 +66,39 @@ export const Cliente = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map(item => (
+                        {pedidos.map(item => (
                             <tr key={item.id}>
                                 <th>{item.id}</th>
                                 <td className="text-center">{item.data}</td>
                                 <td className="text-center">
                                     <Link
                                         to={"/pedidos/" + item.id}
+                                        className="btn btn-outline-primary btn-sm"
+                                    >
+                                        Consultar
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+
+                <Table striped>
+                    <thead>
+                        <tr>
+                            <th>Compra ID</th>
+                            <th className="text-center">Data</th>
+                            <th className="text-center">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {compras.map(item => (
+                            <tr key={item.id}>
+                                <th>{item.id}</th>
+                                <td className="text-center">{item.data}</td>
+                                <td className="text-center">
+                                    <Link
+                                        to={"/compras/" + item.id}
                                         className="btn btn-outline-primary btn-sm"
                                     >
                                         Consultar
