@@ -103,7 +103,7 @@ export const Clientes = () => {
                                         Consultar
                                     </Link>
                                     <Link
-                                        to={"/clientes/editar/" + item.id}
+                                        to={"/clientes/" + item.id + "/editar"}
                                         className="btn btn-outline-warning btn-sm mx-1"
                                     >
                                         Editar

@@ -40,8 +40,8 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/clientes" component={Clientes} />
           <Route path="/clientes/cadastrar" component={ClienteCadastrar} />
-          <Route path="/clientes/:id" component={Cliente} />
-          <Route path="/clientes/editar/:id" component={ClienteEditar} />
+          <Route exact path="/clientes/:id" component={Cliente} />
+          <Route path="/clientes/:id/editar/" component={ClienteEditar} />
           <Route exact path="/pedidos" component={Pedidos} />
           <Route path="/pedidos/cadastrar" component={PedidoCadastrar} />
           <Route exact path="/pedidos/:id" component={Pedido} />
